@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      p {
+        font-weight: bold;
+      }
+      .topic {
+        text-decoration: underline;
+        margin: 10px;
+      }
+      .task {
+        margin: 20px 10px;
+      }
+      .container {
+        padding-bottom: 15px;
+        border-bottom: 1px black solid;
+      }
+    </style>
+
+    <p>Задание 1</p>
+
+    <div class="topic">Работа с JSON.parse</div>
+    <div class="task">
+      Дана JSON строка '["Коля", "Вася", "Петя"]'. Преобразуйте ее в массив
+      JavaScript и выведите на экран элемент "Петя".
+    </div>
+
+    <div class="container divT1"></div>
+
+    <p>Задание 2</p>
+
+    <div class="topic">JSON.stringify</div>
+    <div class="task">
+      Дан объект {a: 'aaa', b: 'bbb'}. Преобразуйте его в JSON.
+    </div>
+
+    <div class="container divT2"></div>
+
+    <script>
+      // http://old.code.mu/tasks/javascript/advanced/rabota-s-json-v-javascript.html
+
+      // задание 1
+
+      const d = document
+      const str = '["Коля", "Вася", "Петя"]'
+      const divT1 = d.querySelector('.divT1')
+
+      function outputOfResult(parent, receivedValue, initialValue = 'none') {
+        if (initialValue !== 'none') {
+          const sourceString = `Исходная строка: ${initialValue}`
+          const newDiv = d.createElement('div')
+          parent.appendChild(newDiv)
+          newDiv.innerHTML = sourceString
+        }
+
+        const modifiedString = `Результат: ${receivedValue}`
+        const newDiv2 = d.createElement('div')
+        parent.appendChild(newDiv2)
+        newDiv2.innerHTML = modifiedString
+      }
+
+      const str2 = JSON.parse(str)[2]
+
+      outputOfResult(divT1, str2, str)
+
+      // задание 2
+
+      const str3 = { a: 'aaa', b: 'bbb' }
+      const divT2 = d.querySelector('.divT2')
+
+      const str4 = JSON.stringify(str3)
+
+      outputOfResult(divT2, str4)
+    </script>
+  </body>
+</html>
